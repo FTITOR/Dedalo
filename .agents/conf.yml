@@ -1,0 +1,79 @@
+# ==============================================================================
+# This file is the root manifest for the model-agnostic agent system.
+# It defines project metadata, security rules, and the registry of agents.
+# Any AI tool can parse this YAML to understand the project context.
+# ==============================================================================
+
+project:
+  name: my_app
+  type: elixir_umbrella
+  apps:
+    - name: my_app_one
+      path: apps/my_app_one
+      description: "A single one app"
+    - name: my_app_two 
+      path: apps/my_app_two
+      description: "A single two app"
+
+# ==============================================================================
+# Security & Permissions
+# ==============================================================================
+# Agents MUST respect these rules. Each tool adapter should map these
+# to its native permission format (e.g., .claude/settings.json, .cursorrules).
+#
+# Mapping examples:
+#   Claude Code:  security.deny.files -> permissions.deny["Read(path)"]
+#   Gemini:       security.deny.files -> system instruction restrictions
+#   Cursor:       security.deny       -> .cursorrules deny patterns
+# ==============================================================================
+security:
+  deny:
+    files:
+      - path: "etc/**"
+        reason: "Contains application secrets and sensitive configuration"
+      - path: "config/prod.exs"
+        reason: "Production configuration should not be modified by agents"
+      - path: "config/dev.exs"
+        reason: "Development configuration should not be modified by agents"
+      - path: ".git/**"
+        reason: "Git internals must not be accessed"
+    commands:
+      - pattern: "npm *"
+        reason: "No npm commands allowed"
+      - pattern: "yarn *"
+        reason: "No yarn commands allowed"
+      - pattern: "mix deps.*"
+        reason: "Do not install or modify dependencies"
+      - pattern: "mix ecto.*"
+        reason: "Do not run migrations or database commands"
+      - pattern: "rm *"
+        reason: "Do not delete files"
+  allow:
+    commands:
+      - pattern: "mix format"
+        description: "Format Elixir code"
+      - pattern: "mix compile"
+        description: "Compile the project to verify changes"
+
+# ==============================================================================
+# Internationalization
+# ==============================================================================
+i18n:
+  supported_locales: ["en", "es"]
+  default_locale: "en"
+  gettext_module: "MyAppOne.Gettext"
+  paths:
+    pot: "apps/my_app_one/priv/gettext/"
+    po_en: "apps/my_app_one/priv/gettext/en/LC_MESSAGES/"
+    po_es: "apps/my_app_one/priv/gettext/es/LC_MESSAGES/"
+
+# ==============================================================================
+# Registered Agents
+# ==============================================================================
+agents:
+  - id: translator
+    path: agents/translator/agent.yaml
+    description: "Specialized agent for adding and maintaining translations in Elixir source files"
+  - id: agent_creator
+    path: agents/agent_creator/agent.yaml
+    description: "Meta-agent that creates new agents within the .agents/ architecture"
