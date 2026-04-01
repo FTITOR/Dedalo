@@ -1,5 +1,11 @@
 # Dedalo
 
+[![Hex.pm](https://img.shields.io/hexpm/v/dedalo.svg)](https://hex.pm/packages/dedalo) 
+[![Build Status](https://github.com/FTITOR/Dedalo/actions/workflows/elixir.yml/badge.svg)](https://github.com/FTITOR/Dedalo/actions/workflows/elixir.yml)
+[![Codecov](https://img.shields.io/codecov/c/github/FTITOR/Dedalo.svg)](https://codecov.io/gh/FTITOR/Dedalo)
+[![License: MIT](https://img.shields.io/github/license/FTITOR/Dedalo.svg)](https://raw.githubusercontent.com/FTITOR/Dedalo/master/LICENSE)
+[![Hex.pm](https://img.shields.io/hexpm/dt/dedalo.svg)](https://hex.pm/packages/dedalo)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
