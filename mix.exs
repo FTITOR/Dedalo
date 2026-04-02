@@ -34,7 +34,7 @@ defmodule Dedalo.MixProject do
     [
       {:nimble_parsec, "1.3.1", only: :docs, runtime: false, override: true},
       {:jason, "~> 1.0"},
-      {:yaml_elixir, "~> 2.12"},
+      {:yaml_elixir, "== 2.8.0"},
       {:ex_doc, "0.24.0", only: :docs, runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false, optional: true},
       {:excoveralls, "~> 0.10", only: :test}
