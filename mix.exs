@@ -25,7 +25,7 @@ defmodule Dedalo.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger, :eex]
     ]
   end
 
@@ -56,7 +56,7 @@ defmodule Dedalo.MixProject do
     [
       name: "dedalo",
       maintainers: ["Francisco Ramirez", "Jorge Garrido"],
-      files: ~w(lib .formatter.exs mix.exs README.md LICENSE),
+      files: ~w(lib .formatter.exs mix.exs README.md LICENSE priv),
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/FTITOR/Dedalo"}
     ]
