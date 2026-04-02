@@ -3,13 +3,12 @@
 [![Hex.pm](https://img.shields.io/hexpm/v/dedalo.svg)](https://hex.pm/packages/dedalo) 
 [![Build Status](https://github.com/FTITOR/Dedalo/actions/workflows/elixir.yml/badge.svg)](https://github.com/FTITOR/Dedalo/actions/workflows/elixir.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/FTITOR/Dedalo.svg)](https://codecov.io/gh/FTITOR/Dedalo)
-[![License: MIT](https://img.shields.io/github/license/FTITOR/Dedalo.svg)](https://raw.githubusercontent.com/FTITOR/Dedalo/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Hex.pm](https://img.shields.io/hexpm/dt/dedalo.svg)](https://hex.pm/packages/dedalo)
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `dedalo` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `dedalo` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
