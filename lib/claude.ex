@@ -2,7 +2,7 @@ defmodule Dedalo.Claude do
   @moduledoc """
   Claude builder and linker for `dedalo` mix tool.
   """
-  @header "AUTO-GENERATED — Do not edit manually. Edit .agents/config.yaml instead."
+  @header "AUTO-GENERATED — Do not edit manually. Edit your yml file instead and run again mix dedalo tool."
   @base_dir ".claude"
   @settings_file "settings.json"
 
