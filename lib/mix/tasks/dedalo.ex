@@ -30,7 +30,7 @@ defmodule Mix.Tasks.Dedalo do
   """
   use Mix.Task
 
-  alias Dedalo.Claude
+  alias Dedalo.{Claude, Gemini}
 
   @shortdoc "Build, link and sync LLM structure from an Elixir well-defined base."
 
@@ -95,5 +95,16 @@ defmodule Mix.Tasks.Dedalo do
       end)
 
     Mix.shell().info("✓ Done in #{microseconds / 1_000_000}s. Available at .claude/settings.json")
+  end
+
+  defp build_llm_tool(config, "gemini") do
+    Mix.shell().info("✓ Building, linking and syncing with Gemini ...")
+
+    {microseconds, _result} =
+      :timer.tc(fn ->
+        Gemini.build_and_link(config)
+      end)
+
+    Mix.shell().info("✓ Done in #{microseconds / 1_000_000}s. Available at .gemini/")
   end
 end
