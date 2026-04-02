@@ -28,4 +28,15 @@ defmodule DedaloTest do
     assert_received {:mix_shell, :info, [output]}
     assert output =~ "Available at .claude/settings.json"
   end
+
+  test "Gemini success" do
+    Mix.shell(Mix.Shell.Process)
+
+    Mix.Tasks.Dedalo.run(["gemini", "--path", ".agents/conf.yml"])
+
+    assert_received {:mix_shell, :info, ["📖 conf file found, processing ..."]}
+    assert_received {:mix_shell, :info, ["✓ Building, linking and syncing with Gemini ..."]}
+    assert_received {:mix_shell, :info, [output]}
+    assert output =~ "Available at .gemini/"
+  end
 end
