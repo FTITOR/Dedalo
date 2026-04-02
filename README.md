@@ -19,7 +19,7 @@ def deps do
 end
 ```
 
-### How to use
+## How to use
 
 `Dedalo` is a mix tool to build, link and sync the base configuration of LLMs
 (agents) such as Claude, Gemini, Cursor, etc., for Elixir projects
