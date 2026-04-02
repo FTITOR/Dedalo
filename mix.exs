@@ -32,6 +32,7 @@ defmodule Dedalo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:nimble_parsec, "1.3.1", only: :docs, runtime: false, override: true},
       {:jason, "~> 1.0"},
       {:yaml_elixir, "~> 2.12"},
       {:ex_doc, "0.24.0", only: :docs, runtime: false},
@@ -45,7 +46,7 @@ defmodule Dedalo.MixProject do
 
   defp docs do
     [
-      main: "Dedalo",
+      main: "Mix.Tasks.Dedalo",
       source_ref: "v#{@version}",
       source_url: "https://github.com/FTITOR/Dedalo"
     ]
