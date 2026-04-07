@@ -20,7 +20,7 @@ defmodule Dedalo.Gemini do
   ```
   """
   def build_and_link(opts) do
-    :ok = Enum.each([:rm_rf!, :mkdir_p!], &apply(File, &1, [@base_dir]))
+    :ok = File.mkdir_p!(@base_dir)
 
     deny_conf = Keyword.get(opts, :deny, %{})
     allow_conf = Keyword.get(opts, :allow, %{})
