@@ -18,14 +18,15 @@ defmodule Dedalo.MixProject do
       name: "Dedalo",
       docs: docs(),
       dialyzer: [],
-      package: package()
+      package: package(),
+      escript: escript()
     ]
   end
 
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :eex]
+      extra_applications: [:logger, :eex, :mix]
     ]
   end
 
@@ -60,5 +61,9 @@ defmodule Dedalo.MixProject do
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/FTITOR/Dedalo"}
     ]
+  end
+
+  defp escript do
+    [main_module: Dedalo.CLI]
   end
 end
