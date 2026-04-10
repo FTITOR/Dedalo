@@ -45,3 +45,17 @@ will be used: `.agents/conf.yaml`
 ```
 mix dedalo claude --path .agents/conf.yml 
 ```
+
+## Portable escript
+
+If you plan to use as a script just build:
+
+```
+mix escript.build
+```
+
+This will create an executable and can be used as a single script:
+
+```
+./dedalo claude --path .agents/conf.yml
+```

@@ -39,4 +39,12 @@ defmodule DedaloTest do
     assert_received {:mix_shell, :info, [output]}
     assert output =~ "Available at .gemini/"
   end
+
+  test "Escript" do
+    Mix.shell(Mix.Shell.Process)
+
+    Dedalo.CLI.main(["cursor", "--path", ".agents/conf.yml"])
+
+    assert_received {:mix_shell, :error, ["⚠️  no supported LLM, please execute mix help dedalo for more info."]}
+  end
 end
