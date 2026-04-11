@@ -40,6 +40,10 @@ defmodule Mix.Tasks.Dedalo do
   @default_path ".agents/conf.yaml"
   @tags ["deny", "allow"]
   @security "security"
+  @agents_key "agents"
+  @conventions_key "conventions"
+  @project_key "project"
+  @workflows_key "workflows"
 
   @impl true
   def run([llm | options]) when llm in @supported_llms do
@@ -74,9 +78,18 @@ defmodule Mix.Tasks.Dedalo do
       {:ok, conf} ->
         conf_sec = Map.get(conf, @security, %{})
 
-        Enum.map(@tags, fn tag ->
-          {String.to_atom(tag), Map.get(conf_sec, tag, %{})}
-        end)
+        security =
+          Enum.map(@tags, fn tag ->
+            {String.to_atom(tag), Map.get(conf_sec, tag, %{})}
+          end)
+
+        security ++
+          [
+            {:agents, Map.get(conf, @agents_key, [])},
+            {:conventions, Map.get(conf, @conventions_key, %{})},
+            {:project, Map.get(conf, @project_key, %{})},
+            {:workflows, Map.get(conf, @workflows_key, [])}
+          ]
 
       {:error, reason} ->
         Mix.shell().error("⚠️  error while parsing conf file, reason #{inspect(reason)}")

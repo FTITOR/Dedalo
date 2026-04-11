@@ -11,7 +11,7 @@ project:
     - name: my_app_one
       path: apps/my_app_one
       description: "A single one app"
-    - name: my_app_two 
+    - name: my_app_two
       path: apps/my_app_two
       description: "A single two app"
 
@@ -56,6 +56,18 @@ security:
         description: "Compile the project to verify changes"
 
 # ==============================================================================
+# Global Conventions
+# ==============================================================================
+conventions:
+  language: "en"
+  language_rule: >
+    ALL agent output MUST be written in English.
+  formatting:
+    - command: "mix format"
+      description: "ALL agents MUST run mix format after modifying Elixir files"
+      required: true
+
+# ==============================================================================
 # Internationalization
 # ==============================================================================
 i18n:
@@ -71,9 +83,39 @@ i18n:
 # Registered Agents
 # ==============================================================================
 agents:
-  - id: translator
-    path: agents/translator/agent.yaml
-    description: "Specialized agent for adding and maintaining translations in Elixir source files"
-  - id: agent_creator
-    path: agents/agent_creator/agent.yaml
-    description: "Meta-agent that creates new agents within the .agents/ architecture"
+  - id: my_command_agent
+    command: "/my_command_agent"
+    trigger: "command"
+    path: agents/my_command_agent/agent.yaml
+    workflow: workflows/my_command_agent.md
+    description: "A sample agent invoked manually via slash command"
+
+  - id: my_other_command_agent
+    command: "/my_other_command_agent"
+    trigger: "command"
+    path: agents/my_other_command_agent/agent.yaml
+    workflow: workflows/my_other_command_agent.md
+    description: "Another sample agent invoked manually via slash command"
+
+  - id: my_hook_agent
+    trigger: "hook"
+    hook: "post-commit"
+    path: agents/my_hook_agent/agent.yaml
+    workflow: workflows/my_hook_agent.md
+    description: "A sample agent triggered automatically after each commit"
+
+# ==============================================================================
+# Registered Workflows
+# ==============================================================================
+workflows:
+  - id: my_command_agent
+    path: workflows/my_command_agent.md
+    description: "Workflow for the sample command agent"
+
+  - id: my_other_command_agent
+    path: workflows/my_other_command_agent.md
+    description: "Workflow for the other sample command agent"
+
+  - id: my_hook_agent
+    path: workflows/my_hook_agent.md
+    description: "Workflow triggered automatically by post-commit hook"
